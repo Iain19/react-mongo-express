@@ -21,7 +21,7 @@ gulp.task('live-server', function() {
     server.start();
 });
 
-gulp.task('serve', ['live-server'], function() {
+gulp.task('serve', ['bundle', 'live-server'], function() {
     browserSync.init(null, {
         browser: 'google chrome',
         proxy: 'http://localhost:8080',
