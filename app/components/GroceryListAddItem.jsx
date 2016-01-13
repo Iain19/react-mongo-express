@@ -11,7 +11,7 @@ module.exports = React.createClass({
     handleInputName: function(e) {
         this.setState({
             input: e.target.value
-        })
+        });
     },
 
     addItem: function(e) {
@@ -20,7 +20,7 @@ module.exports = React.createClass({
             name: this.state.input
         });
         this.setState({
-            input: '';
+            input: ''
         });
     },
 
