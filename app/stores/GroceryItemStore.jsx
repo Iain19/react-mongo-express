@@ -24,13 +24,25 @@ function GroceryItemStore() {
 
     function deleteGroceryItem(item) {
         var index;
-        items.find(function(_item, _index) {
+        items.some(function(_item, _index) {
             if (_item.name === item.name) {
                 index = _index;
                 return true;
             }
         });
         items.splice(index, 1);
+        triggerListeners();
+    }
+
+    function setGroceryItemBought(item, isBought) {
+        var groceryItem;
+        items.some(function(_item, _index) {
+            if (item.name === _item.name) {
+                groceryItem = _item;
+                return true;
+            }
+        });
+        groceryItem.purchased = isBought;
         triggerListeners();
     }
 
@@ -53,6 +65,12 @@ function GroceryItemStore() {
                     break;
                 case 'delete':
                     deleteGroceryItem(event.payload);
+                    break;
+                case 'buy':
+                    setGroceryItemBought(event.payload, true);
+                    break;
+                case 'unbuy':
+                    setGroceryItemBought(event.payload, false);
                     break;
             }
         }
