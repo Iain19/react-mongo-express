@@ -1,0 +1,32 @@
+html {
+    color: darkslategray;
+    background-color: #fffefd;
+}
+
+body {
+    padding-top: 3rem;
+}
+
+.grocery-item {
+    height: 40px;
+}
+
+.purchased-false {
+    background-color: red;
+}
+
+.purchased-true {
+    background-color: green;
+    text-decoration: line-through;
+    color: slategray;
+}
+
+h1 {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.grocery-addItem {
+    margin-top: 1rem;
+    padding-top: 1rem;
+}

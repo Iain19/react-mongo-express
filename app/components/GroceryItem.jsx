@@ -16,9 +16,9 @@ module.exports = React.createClass({
     },
     render: function() {
         return (
-            <div>
-                <div>
-                    <h4 className={this.props.item.purchased ? "purchased" : ''}>{this.props.item.name}</h4>
+            <div className="grocery-item row">
+                <div className="six columns">
+                    <h4 className={this.props.item.purchased ? 'purchased-true' : 'purchased-false'}>{this.props.item.name}</h4>
                 </div>
                 <form className="three columns" onSubmit={this.togglePurchased}>
                     <button className={this.props.item.purchased ? '' : 'button-primary'}>
