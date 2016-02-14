@@ -1,16 +1,15 @@
 var dispatcher = require('./../dispatcher.js');
+var helper = require('./../helpers/RestHelper.js')
 
 function GroceryItemStore() {
-    var items = [{
-        name: 'milk'
-    }, {
-        name: 'water'
-    }, {
-        name: 'meat',
-        purchased: true
-    }, {
-        name: 'fish'
-    }];
+    var items = [];
+
+    helper.get('api/items')
+        .then(function(data) {
+            items = data;
+            triggerListeners();
+        });
+
     var listeners = [];
 
     function getItems() {
