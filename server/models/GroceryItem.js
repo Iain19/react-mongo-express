@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var GroceryItemSchema = {
     name: String,
-    purchase: Boolean,
+    purchased: Boolean,
     id: String
 };
 

@@ -11,7 +11,11 @@ module.exports = function(app) {
             var item = req.body;
             var groceryItem = new GroceryItem(item);
             groceryItem.save(function(err, data) {
-                res.status(300).send();
+                if (err) {
+                    res.status(501).send();
+                } else {
+                    res.status(200).send(data);
+                }
             });
         });
 
@@ -19,17 +23,22 @@ module.exports = function(app) {
         .delete(function(req, res) {
             GroceryItem.find({
                 _id: req.params.id
-            }).remove();
+            }).remove(function() {
+                res.status(202).send();
+            });
         })
         .patch(function(req, res) {
             GroceryItem.findOne({
                 _id: req.body._id
             }, function(error, doc) {
+                if (!doc){
+                    return res.status(404).send();
+                }
                 for (var key in req.body) {
                     doc[key] = req.body[key];
                 }
                 doc.save();
-                res.status(200).send();
+                res.status(200).send(doc);
             });
         });
 };
